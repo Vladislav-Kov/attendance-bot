@@ -1,0 +1,7 @@
+.idea/
+.venv/
+__pycache__/
+static/sessions.json
+static/logs.log
+static/config.py
+README.md
