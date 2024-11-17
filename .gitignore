@@ -2,6 +2,6 @@
 .venv/
 __pycache__/
 static/sessions.json
-static/logs.log
-static/config.py
+static/logs/logs.log
+config.py
 README.md
