@@ -11,7 +11,7 @@ def configure_logging(level=logging.WARNING):
     logging.basicConfig(level=level,
                         format='[%(asctime)s.%(msecs)03d] %(levelname)-7s %(module)-20s: %(lineno)-3d - %(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S',
-                        handlers=[handler])
+                        )
 
 
 if __name__ == '__main__':

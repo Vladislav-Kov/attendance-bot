@@ -1,33 +1,25 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
 
+from interface import *
 
-async def create_markup(**kwargs) -> InlineKeyboardMarkup:
+async def create_markup(button: dict) -> InlineKeyboardMarkup:
     buttons = [
         [InlineKeyboardButton(text=value, callback_data=key)]
-        for key, value in kwargs
+        for key, value in button.items()
     ]
-
+    print(buttons)
     return InlineKeyboardMarkup(inline_keyboard=buttons)
 
 
-home_menu_markup = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='Подготовка', callback_data='prepare'),
-     InlineKeyboardButton(text='Отметить детей', callback_data='marking')],
-    [InlineKeyboardButton(text='Обновление', callback_data='new_day')],
-    [InlineKeyboardButton(text='Список детей', callback_data='pool')]
-])
-
-
-back_home_markup = ReplyKeyboardMarkup(keyboard=[
-    [KeyboardButton(text='home')]
+home_menu_markup = ReplyKeyboardMarkup(keyboard=[
+    [KeyboardButton(text=prepare_btn),
+     KeyboardButton(text=mark_children_btn)],
+    [KeyboardButton(text=update_btn)],
+    [KeyboardButton(text=children_list_btn)]
 ], resize_keyboard=True)
-
 
 profile_menu_markup = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text='удалить', callback_data='delete_profile'),
-     InlineKeyboardButton(text='change', callback_data='edit_profile')]
+    [InlineKeyboardButton(text=delete_btn, callback_data='delete_profile'),
+     InlineKeyboardButton(text=change_btn, callback_data='edit_profile')],
+    [InlineKeyboardButton(text=back_pool_btn, callback_data='pool')]
 ])
-
-back_pool_markup = ReplyKeyboardMarkup(keyboard=[
-    [KeyboardButton(text='pool'), KeyboardButton(text='home')]
-], resize_keyboard=True)

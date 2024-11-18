@@ -4,6 +4,7 @@ import logging
 
 from config import TOKEN
 from logger import configure_logging
+from handlers import router
 
 print('Running')
 
@@ -19,6 +20,7 @@ except Exception as e:
 
 async def main():
     logger.info('Start')
+    dp.include_router(router)
     await dp.start_polling(bot)
 
 if __name__ == '__main__':
